@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 13:46:26 by grgauthi          #+#    #+#             */
-/*   Updated: 2018/12/18 15:14:40 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/05/04 15:53:19 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char		*ft_readchr(const int fd, int c)
 		rnull = 1;
 	while (rnull == 0 && read(fd, buf, BUFF_SIZE) > 0)
 	{
-		line = ft_strjoinfree(line, buf);
+		line = ft_strjoinfree(&line, buf);
 		if (!line)
 			rnull = 1;
 		if (ft_strchr(buf, c) != NULL)

@@ -6,7 +6,7 @@
 #    By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 16:40:34 by grgauthi          #+#    #+#              #
-#    Updated: 2019/03/27 11:34:19 by grgauthi         ###   ########.fr        #
+#    Updated: 2019/05/04 15:44:42 by grgauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRC =		ft_memset.c		\
 			ft_putllong.c	\
 			ft_putuint.c	\
 			ft_maxsizet.c	\
+			get_next_line.c	\
 			ft_convert_base.c
 
 OBJ =		$(SRC:.c=.o)

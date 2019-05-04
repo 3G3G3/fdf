@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 17:07:24 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/04/06 14:49:33 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/05/04 15:44:10 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,9 @@ t_list				*ft_lstgetelem(t_list *lst, size_t n);
 
 void				ft_putendllst(t_list *lst);
 
-char				*ft_readfile(const int fd, size_t buff_size);
+/*
+** char				*ft_readfile(const int fd, size_t buff_size);
+*/
 
 size_t				ft_strchri(char const *s, int c);
 
@@ -186,5 +188,5 @@ char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 size_t				ft_maxsizet(size_t m, size_t n);
 
-int					get_next_line(cont int fd, char **line);
+int					get_next_line(const int fd, char **line);
 #endif
