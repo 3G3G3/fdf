@@ -1,0 +1,5 @@
+*.o
+fdf.dSYM
+fdf
+*/*o
+libft.a
