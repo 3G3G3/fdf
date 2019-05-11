@@ -13,13 +13,15 @@ MINILIBX_FLAGS = -I $(MINILIBX_PATH) -L $(MINILIBX_PATH) -lmlx -framework OpenGL
 LIBFT = $(LIBFT_PATH)libft.a
 
 SRCS = main.c					\
-		ft_draw.c				\
 		ft_parsefile.c			\
-		ft_parallele_proj.c		\
-		ft_rotate.c				\
-		ft_translate.c			\
+		ft_init_lst.c			\
+		ft_adjust_position.c	\
+		ft_move.c				\
 		ft_keys.c				\
-		ft_exit.c
+		ft_parallele_proj.c		\
+		ft_draw.c				\
+		ft_exit.c				\
+		ft_tools.c
 
 SRC = $(addprefix $(SRC_PATH), $(SRCS))
 
