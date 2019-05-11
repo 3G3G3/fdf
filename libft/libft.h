@@ -188,5 +188,9 @@ char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 size_t				ft_maxsizet(size_t m, size_t n);
 
+int					ft_max(int i, int j);
+
+int					ft_min(int i, int j);
+
 int					get_next_line(const int fd, char **line);
 #endif

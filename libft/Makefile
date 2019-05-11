@@ -88,6 +88,8 @@ SRC =		ft_memset.c		\
 			ft_putllong.c	\
 			ft_putuint.c	\
 			ft_maxsizet.c	\
+			ft_max.c		\
+			ft_min.c		\
 			get_next_line.c	\
 			ft_convert_base.c
 
