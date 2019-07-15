@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 15:34:13 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/05/11 18:21:51 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/15 20:31:20 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ double			ft_rotate_y(double x, double y, double z, t_move *move)
 
 double			ft_rotate_z(double x, double y, double z, t_move *move)
 {
-
 	return (sin(move->theta_x) * sin(move->theta_z) * x
 		+ sin(move->theta_x) * cos(move->theta_z) * y
 		+ cos(move->theta_x) * z);
@@ -46,8 +45,6 @@ void			ft_rotate(t_list *points, t_move *move)
 		point->x_m = cos(move->theta_z) * x - sin(move->theta_z) * y;
 		point->y_m = ft_rotate_y(x, y, z, move);
 		point->z_m = ft_rotate_z(x, y, z, move);
-//		point->x_m = cos(move->theta_z) * x - sin(move->theta_z) * y;
-//		point->y_m = sin(move->theta_z) * x + cos(move->theta_z) * y;
 		points = points->next;
 	}
 }

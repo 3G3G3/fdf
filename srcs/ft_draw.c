@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_draw.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/15 20:32:22 by grgauthi          #+#    #+#             */
+/*   Updated: 2019/07/15 20:38:16 by grgauthi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void			ft_draw_point(int x, int y, t_list *param)
@@ -10,12 +22,7 @@ void			ft_draw(t_list *param)
 	t_point		*point;
 	t_list		*points;
 
-	mlx_clear_window(param->content, (param->next)->content);
 	points = ft_get_points(param);
-	ft_center(points);
-	ft_move(param);
-	ft_projection(param);
-	ft_get_win_position(param);
 	while (points)
 	{
 		point = (t_point *)(points->content);
@@ -28,4 +35,15 @@ void			ft_draw(t_list *param)
 	}
 }
 
-// une fonction une action, rajouter une fonction print
+void			ft_print(t_list *param)
+{
+	t_list		*points;
+
+	mlx_clear_window(param->content, (param->next)->content);
+	points = ft_get_points(param);
+	ft_center(points);
+	ft_move(param);
+	ft_projection(param);
+	ft_get_win_position(param);
+	ft_draw(param);
+}

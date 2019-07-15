@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 14:41:58 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/05/11 17:30:47 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/15 22:42:11 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_move				*ft_get_move(t_list *param);
 
 t_list				*ft_get_points(t_list *param);
 
+void				ft_set_neighbours(t_list *list, int j, t_list *new);
+
 t_list				*ft_readfile(char *filemname);
 
 t_list				*ft_init_lst(char *name);
@@ -85,11 +87,25 @@ void				ft_projection(t_list *param);
 
 void				ft_draw_point(int x, int y, t_list *param);
 
-void				ft_draw(t_list *param);
+void				ft_print(t_list *param);
+
+int					ft_test_quadran(int i, int j, int m, int n);
+
+int					ft_test_growth(int i, int j);
+
+int					ft_draw_octantr(t_point *point1, t_point *point2,
+		t_list *param, t_line *line);
+
+int					ft_draw_octantl(t_point *point1, t_point *point2,
+		t_list *param, t_line *line);
 
 void				ft_draw_line(t_point *point1, t_point *point2, t_list *param);
 
 void				ft_free_param(t_list *param);
+
+double				ft_rotate_angle(t_move *move);
+
+int					ft_keys2(int keycode, void *param);
 
 int					ft_keys(int keycode, void *param);
 

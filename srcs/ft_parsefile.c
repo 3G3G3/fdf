@@ -6,12 +6,11 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 14:49:25 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/05/04 17:35:47 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/15 22:43:01 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 t_list			*ft_parsepoint(char *point, int i, int j)
 {
@@ -43,13 +42,11 @@ t_list			*ft_parseline(char *line, int j)
 	int			i;
 	t_list		*res;
 
-	tmp_split = ft_strsplit(line, ' ');
-	if (tmp_split == NULL)
+	if ((tmp_split = ft_strsplit(line, ' ')) == NULL)
 		return (NULL);
 	if (tmp_split[0])
 	{
-		res = ft_parsepoint(tmp_split[0], 0, j);
-		if (res == NULL)
+		if ((res = ft_parsepoint(tmp_split[0], 0, j)) == NULL)
 			return (NULL);
 		free(tmp_split[0]);
 	}
@@ -66,22 +63,6 @@ t_list			*ft_parseline(char *line, int j)
 	free(tmp_split);
 	free(line);
 	return (res);
-}
-
-void			ft_set_neighbours(t_list *list, int j, t_list *new)
-{
-	while (list && ((t_point *)(list->content))->y < j - 1)
-		list = list->next;
-	while (list && new)
-	{
-		if (list->next)
-			((t_point *)(list->content))->h_n = (t_point *)((list->next)->content);
-		if (new->next)
-			((t_point *)(new->content))->h_n = (t_point *)((new->next)->content);
-		((t_point *)(list->content))->v_n = (t_point *)(new->content);
-		list = list->next;
-		new = new->next;
-	}
 }
 
 t_list			*ft_parsefile(const int fd)
@@ -102,8 +83,8 @@ t_list			*ft_parsefile(const int fd)
 	{
 		if ((tmp = ft_parseline(line, j)) == NULL)
 			return (NULL);
-		ft_set_neighbours(res, j, tmp);
 //		free list;
+		ft_set_neighbours(res, j, tmp);
 		ft_lstadd_fifo(&res, tmp);
 		j++;
 	}
@@ -122,4 +103,3 @@ t_list			*ft_readfile(char *filename)
 	close(fd);
 	return (res);
 }
-

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   ft_keys_tools.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 20:38:44 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 21:39:07 by grgauthi         ###   ########.fr       */
+/*   Created: 2019/07/15 21:53:13 by grgauthi          #+#    #+#             */
+/*   Updated: 2019/07/15 21:56:13 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		ft_exit(void *param)
+double		ft_rotate_angle(t_move *move)
 {
-	(void)param;
-	ft_free_param(param);
-	while (1)
-		;
-	exit(-1);
+	if (move->proj == 'i')
+		return (M_PI / 2);
+	return (M_PI / 12);
 }
-
-// remove while after leaks checks

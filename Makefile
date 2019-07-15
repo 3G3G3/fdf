@@ -14,14 +14,19 @@ MINILIBX_FLAGS = -I $(MINILIBX_PATH) -L $(MINILIBX_PATH) -lmlx -framework OpenGL
 LIBFT = $(LIBFT_PATH)libft.a
 
 SRCS = main.c					\
+		ft_parsefile_tools.c	\
 		ft_parsefile.c			\
 		ft_init_lst.c			\
 		ft_adjust_position.c	\
 		ft_extent.c				\
 		ft_move.c				\
+		ft_keys_tools.c			\
+		ft_keys2.c				\
 		ft_keys.c				\
 		ft_projection.c			\
 		ft_draw.c				\
+		ft_draw_line_octantr.c	\
+		ft_draw_line_octantl.c	\
 		ft_draw_line.c			\
 		ft_free.c				\
 		ft_exit.c				\
