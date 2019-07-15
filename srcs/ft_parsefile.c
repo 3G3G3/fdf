@@ -17,9 +17,14 @@ t_list			*ft_parsepoint(char *point, int i, int j)
 {
 	t_point		*res_point;
 	t_list		*res_lst;
+	char		*str;
 
-	if (ft_strcmp(ft_itoa(ft_atoi(point)), point) != 0)
+	if (ft_strcmp(str = ft_itoa(ft_atoi(point)), point) != 0)
+	{
+		free(str);
 		return (NULL);
+	}
+	free(str);
 	res_point = (t_point *)ft_memalloc(sizeof(t_point));
 	if (res_point == NULL)
 		return (NULL);
@@ -46,6 +51,7 @@ t_list			*ft_parseline(char *line, int j)
 		res = ft_parsepoint(tmp_split[0], 0, j);
 		if (res == NULL)
 			return (NULL);
+		free(tmp_split[0]);
 	}
 	i = 1;
 	while (tmp_split[i])
@@ -53,11 +59,29 @@ t_list			*ft_parseline(char *line, int j)
 		if ((tmp = ft_parsepoint(tmp_split[i], i, j)) == NULL)
 			return (NULL);
 //		free list
+		free(tmp_split[i]);
 		ft_lstadd_fifo(&res, tmp);
 		i++;
 	}
+	free(tmp_split);
 	free(line);
 	return (res);
+}
+
+void			ft_set_neighbours(t_list *list, int j, t_list *new)
+{
+	while (list && ((t_point *)(list->content))->y < j - 1)
+		list = list->next;
+	while (list && new)
+	{
+		if (list->next)
+			((t_point *)(list->content))->h_n = (t_point *)((list->next)->content);
+		if (new->next)
+			((t_point *)(new->content))->h_n = (t_point *)((new->next)->content);
+		((t_point *)(list->content))->v_n = (t_point *)(new->content);
+		list = list->next;
+		new = new->next;
+	}
 }
 
 t_list			*ft_parsefile(const int fd)
@@ -78,6 +102,7 @@ t_list			*ft_parsefile(const int fd)
 	{
 		if ((tmp = ft_parseline(line, j)) == NULL)
 			return (NULL);
+		ft_set_neighbours(res, j, tmp);
 //		free list;
 		ft_lstadd_fifo(&res, tmp);
 		j++;

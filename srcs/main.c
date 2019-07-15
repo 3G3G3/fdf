@@ -1,17 +1,32 @@
 #include "fdf.h"
 
-int			main(int argc, char **argv)
+t_list			*ft_init(char *argv)
 {
 	t_list		*points;
+	t_list		*res;
+
+	points = ft_readfile(argv);
+	if (points == NULL)
+		exit (-1);
+	res = ft_init_lst(argv);
+	if (res == NULL)
+		exit (-1);
+//	free points
+	((res->next)->next)->next = points;
+	ft_center(points);
+	ft_move(res);
+	ft_projection(res);
+	ft_get_extent(res);
+	return (res);
+}
+
+int				main(int argc, char **argv)
+{
 //	void		*mlx_ptr;
 //	void		*win_ptr;
 	t_list		*ptrs;
 
 	if (argc != 2)
-		return (-1);
-	points = ft_readfile(argv[1]);
-//	ft_center(points);
-	if (points == NULL)
 		return (-1);
 //	+ perror
 /*	mlx_ptr = mlx_init();
@@ -29,10 +44,7 @@ int			main(int argc, char **argv)
 	(ptrs->next)->next = points;
 	*/
 // protection
-	ptrs = ft_init_lst(argv[1]);
-	if (ptrs == NULL)
-		return (1);
-	((ptrs->next)->next)->next = points;
+	ptrs = ft_init(argv[1]);
 	ft_draw(ptrs);
 	mlx_key_hook((ptrs->next)->content, &ft_keys, ptrs);
 	mlx_loop(ptrs->content);
@@ -41,6 +53,10 @@ int			main(int argc, char **argv)
 }
 
 /*
+** projection en perspective
+
 ** fuite mémoire quand carte bonne mais espace suplémentaire ('1 1 0  1  0)
 ** test sur des cartes à une seule ligne / colonne, un point unique
+** fuite mémoire sur carte invalide
+** fuite mémoire sur malloc erreur
 */

@@ -7,6 +7,7 @@ INC_PATH = ./includes/
 
 CC = gcc
 DEBUG_FLAGS = -fsanitize=address
+#DEBUG_FLAGS =  
 CFLAGS = -Wall -Werror -Wextra -I $(INC_PATH) -I $(LIBFT_PATH) -g3
 MINILIBX_FLAGS = -I $(MINILIBX_PATH) -L $(MINILIBX_PATH) -lmlx -framework OpenGL -framework AppKit
 
@@ -16,10 +17,13 @@ SRCS = main.c					\
 		ft_parsefile.c			\
 		ft_init_lst.c			\
 		ft_adjust_position.c	\
+		ft_extent.c				\
 		ft_move.c				\
 		ft_keys.c				\
-		ft_parallele_proj.c		\
+		ft_projection.c			\
 		ft_draw.c				\
+		ft_draw_line.c			\
+		ft_free.c				\
 		ft_exit.c				\
 		ft_tools.c
 

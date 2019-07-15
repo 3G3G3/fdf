@@ -12,6 +12,21 @@
 
 #include "fdf.h"
 
+double			ft_rotate_y(double x, double y, double z, t_move *move)
+{
+	return (cos(move->theta_x) * sin(move->theta_z) * x
+		+ cos(move->theta_x) * cos(move->theta_z) * y
+		- sin(move->theta_x) * z);
+}
+
+double			ft_rotate_z(double x, double y, double z, t_move *move)
+{
+
+	return (sin(move->theta_x) * sin(move->theta_z) * x
+		+ sin(move->theta_x) * cos(move->theta_z) * y
+		+ cos(move->theta_x) * z);
+}
+
 void			ft_rotate(t_list *points, t_move *move)
 {
 	t_point		*point;
@@ -24,10 +39,13 @@ void			ft_rotate(t_list *points, t_move *move)
 		point = (t_point *)(points->content);
 		x = point->x_m;
 		y = point->y_m;
-		z = point->z_m;
+		if (point->z != 0)
+			z = point->z_m + move->t_height;
+		else
+			z = point->z_m;
 		point->x_m = cos(move->theta_z) * x - sin(move->theta_z) * y;
-		point->y_m = cos(move->theta_x) * sin(move->theta_z) * x + cos(move->theta_x) * cos(move->theta_z) * y - sin(move->theta_x);
-		point->z_m = sin(move->theta_x) * sin(move->theta_z) * x + sin(move->theta_x) * cos(move->theta_z) * y + cos(move->theta_x) * z;
+		point->y_m = ft_rotate_y(x, y, z, move);
+		point->z_m = ft_rotate_z(x, y, z, move);
 //		point->x_m = cos(move->theta_z) * x - sin(move->theta_z) * y;
 //		point->y_m = sin(move->theta_z) * x + cos(move->theta_z) * y;
 		points = points->next;

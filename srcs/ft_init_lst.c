@@ -19,10 +19,15 @@ t_move		*ft_move_init(void)
 	res = (t_move *)ft_memalloc(sizeof(t_move));
 	if (res == NULL)
 		return (NULL);
+	res->proj = 'p';
 	res->t_x = 0;
 	res->t_z = 0;
-	res->theta_x = 0;
-	res->theta_z = 0;
+	res->t_height = 0;
+	res->theta_x = - asin(1 / sqrt(3));
+	res->theta_z = M_PI / 4;
+	res->m_zoom = 0;
+//	res->theta_x = - M_PI / 4;
+//	res->theta_z = M_PI / 4;
 	return (res);
 }
 

@@ -49,4 +49,5 @@ void				ft_center(t_list *points)
 		point->z_m = point->z - (center->z / 2);
 		points = points->next;
 	}
+	free(center);
 }
