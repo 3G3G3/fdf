@@ -6,13 +6,13 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 20:39:48 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 20:39:55 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 13:57:59 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		ft_free_lst(t_list *param)
+void		*ft_free_lst(t_list *param)
 {
 	t_list	*next;
 
@@ -23,6 +23,7 @@ void		ft_free_lst(t_list *param)
 		free(param);
 		param = next;
 	}
+	return (NULL);
 }
 
 void		ft_destroy_win(t_list *param)

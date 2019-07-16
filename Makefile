@@ -6,8 +6,8 @@ MINILIBX_PATH = ./minilibx_macos/
 INC_PATH = ./includes/
 
 CC = gcc
-DEBUG_FLAGS = -fsanitize=address
-#DEBUG_FLAGS =  
+#DEBUG_FLAGS = -fsanitize=address
+DEBUG_FLAGS =  
 CFLAGS = -Wall -Werror -Wextra -I $(INC_PATH) -I $(LIBFT_PATH) -g3
 MINILIBX_FLAGS = -I $(MINILIBX_PATH) -L $(MINILIBX_PATH) -lmlx -framework OpenGL -framework AppKit
 

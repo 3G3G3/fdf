@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 17:28:16 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 20:31:38 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 12:28:09 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,14 @@ t_point				*ft_get_center(t_list *points)
 	return (center);
 }
 
-void				ft_center(t_list *points)
+int					ft_center(t_list *points)
 {
 	t_point			*point;
 	t_point			*center;
 
 	center = ft_get_center(points);
 	if (center == NULL)
-		return ;
-//	free everythings;
+		return (-1);
 	while (points != NULL)
 	{
 		point = (t_point *)(points->content);
@@ -50,4 +49,5 @@ void				ft_center(t_list *points)
 		points = points->next;
 	}
 	free(center);
+	return (0);
 }

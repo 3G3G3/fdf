@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 17:07:24 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/05/04 15:44:10 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 11:01:24 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *s);
 
 char				*ft_strdup(const char *s1);
+
+void				*ft_free_char(char *str);
 
 char				*ft_strcpy(char *dest, const char *src);
 
@@ -109,6 +111,8 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 
 char				*ft_strtrim(char const *s);
+
+char				**ft_free_char_2stars(char **tab);
 
 char				**ft_strsplit(char const *s, char c);
 

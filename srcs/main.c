@@ -7,16 +7,23 @@ t_list			*ft_init(char *argv)
 
 	points = ft_readfile(argv);
 	if (points == NULL)
-		exit (-1);
+		return (NULL);
 	res = ft_init_lst(argv);
 	if (res == NULL)
-		exit (-1);
-//	free points
+		return( (t_list *)ft_free_lst(points));
 	((res->next)->next)->next = points;
-	ft_center(points);
+	if (ft_center(points) == -1)
+	{
+		ft_free_param(res);
+		return (NULL);
+	}
 	ft_move(res);
 	ft_projection(res);
-	ft_get_extent(res);
+	if (ft_get_extent(res) == -1)
+	{
+		ft_free_param(res);
+		return (NULL);
+	}
 	return (res);
 }
 
@@ -25,22 +32,26 @@ int				main(int argc, char **argv)
 	t_list		*ptrs;
 
 	if (argc != 2)
+	{
+		ft_putendl("usage: one and only one file allowed");
 		return (-1);
-//	+ perror
-// protection
+	}
 	ptrs = ft_init(argv[1]);
+	if (ptrs == NULL)
+	{
+		ft_putendl("error: ft_init failed");
+		return (-1);
+	}
 	ft_print(ptrs);
 	mlx_key_hook((ptrs->next)->content, &ft_keys, ptrs);
 	mlx_loop(ptrs->content);
-//	+ clear list + perror
 	return (0);
 }
 
 /*
-** projection en perspective
+** projection en perspective, mobilite
+** usage en cas d'erreur
+** check rotation
 
-** fuite mémoire quand carte bonne mais espace suplémentaire ('1 1 0  1  0)
-** test sur des cartes à une seule ligne / colonne, un point unique, carte vide
-** fuite mémoire sur carte invalide
-** fuite mémoire sur malloc erreur
+** fuites memoires
 */

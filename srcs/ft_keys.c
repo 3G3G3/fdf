@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 20:40:06 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 22:05:21 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 12:33:34 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,18 @@ void		ft_clear_move(t_list *param)
 		ft_change_proj_to_isometric(param);
 	if (move->proj == 'q')
 		ft_change_proj_to_perspective(param);
-	ft_center(ft_get_points(param));
+	if (ft_center(ft_get_points(param)) == -1)
+	{
+		ft_free_param(param);
+		exit (-1);
+	}
 	ft_move(param);
 	ft_projection(param);
-	ft_get_extent(param);
+	if (ft_get_extent(param)== -1)
+	{
+		ft_free_param(param);
+		exit (-1);
+	}
 }
 
 int			ft_keys(int keycode, void *param)

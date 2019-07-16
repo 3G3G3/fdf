@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 17:27:37 by grgauthi          #+#    #+#             */
-/*   Updated: 2018/11/27 19:50:38 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 10:52:29 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char			**ft_strsplit(char const *str, char c)
 		{
 			r[n] = ft_strsub(str, i, ft_wl(str + i, c));
 			if (!r[n])
-				return (NULL);
+				return (ft_free_char_2stars(r));
 			n++;
 		}
 		i++;

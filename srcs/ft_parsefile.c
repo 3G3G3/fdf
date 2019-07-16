@@ -6,11 +6,22 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 14:49:25 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 22:43:01 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 14:42:21 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void			*ft_free_parse(char *line, t_list *lst, char **tab)
+{
+	if (line != NULL)
+		ft_free_char(line);
+	if (lst != NULL)
+		ft_free_lst(lst);
+	if (tab != NULL)
+		ft_free_char_2stars(tab);
+	return (NULL);
+}
 
 t_list			*ft_parsepoint(char *point, int i, int j)
 {
@@ -43,25 +54,18 @@ t_list			*ft_parseline(char *line, int j)
 	t_list		*res;
 
 	if ((tmp_split = ft_strsplit(line, ' ')) == NULL)
-		return (NULL);
-	if (tmp_split[0])
-	{
-		if ((res = ft_parsepoint(tmp_split[0], 0, j)) == NULL)
-			return (NULL);
-		free(tmp_split[0]);
-	}
+		return ((t_list *)ft_free_parse(line, NULL, NULL));
+	if (tmp_split[0] && (res = ft_parsepoint(tmp_split[0], 0, j)) == NULL)
+		return ((t_list *)ft_free_parse(line, NULL, tmp_split));
 	i = 1;
 	while (tmp_split[i])
 	{
 		if ((tmp = ft_parsepoint(tmp_split[i], i, j)) == NULL)
-			return (NULL);
-//		free list
-		free(tmp_split[i]);
+			return ((t_list *)ft_free_parse(line, res, tmp_split));
 		ft_lstadd_fifo(&res, tmp);
 		i++;
 	}
-	free(tmp_split);
-	free(line);
+	ft_free_parse(line, NULL, tmp_split);
 	return (res);
 }
 
@@ -72,6 +76,7 @@ t_list			*ft_parsefile(const int fd)
 	int			j;
 	t_list		*res;
 
+	res = NULL;
 	if (get_next_line(fd, &line) > 0)
 	{
 		res = ft_parseline(line, 0);
@@ -82,8 +87,10 @@ t_list			*ft_parsefile(const int fd)
 	while (get_next_line(fd, &line) > 0)
 	{
 		if ((tmp = ft_parseline(line, j)) == NULL)
+		{
+			ft_free_lst(res);
 			return (NULL);
-//		free list;
+		}
 		ft_set_neighbours(res, j, tmp);
 		ft_lstadd_fifo(&res, tmp);
 		j++;

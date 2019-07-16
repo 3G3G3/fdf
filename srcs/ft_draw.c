@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 20:32:22 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 20:38:16 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 13:27:49 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ void			ft_print(t_list *param)
 
 	mlx_clear_window(param->content, (param->next)->content);
 	points = ft_get_points(param);
-	ft_center(points);
+	if (ft_center(points) == -1)
+	{
+		ft_free_param(param);
+		ft_putendl("error malloc: ft_center");
+		exit (-1);
+	}
 	ft_move(param);
 	ft_projection(param);
 	ft_get_win_position(param);

@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 13:47:07 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 22:05:04 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 12:12:27 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,58 @@ t_move		*ft_move_init(void)
 	return (res);
 }
 
-t_list		*ft_init_win(char *name)
+t_list		*ft_mlx_init(void)
 {
 	void	*mlx_ptr;
-	void	*win_ptr;
 	t_list	*ptrs;
 
 	mlx_ptr = mlx_init();
 	if (mlx_ptr == NULL)
 		return (NULL);
-	win_ptr = mlx_new_window(mlx_ptr, W_WIN, H_WIN, name);
-// clear list + perror
-	if (win_ptr == NULL)
-		return (NULL);
 	ptrs = ft_lstnew(NULL, 0);
 	if (ptrs == NULL)
+	{
+		free(mlx_ptr);
 		return (NULL);
-// clear list + perror
-	ptrs->next = ft_lstnew(NULL, 0);
+	}
+	ptrs->content = mlx_ptr;
+	return (ptrs);
+}
+
+t_list		*ft_mlx_new_window(void *mlx_ptr, char *name)
+{
+	void	*win_ptr;
+	t_list	*ptrs;
+
+	win_ptr = mlx_new_window(mlx_ptr, W_WIN, H_WIN, name);
+	if (win_ptr == NULL)
+	{
+		free(mlx_ptr);
+		return (NULL);
+	}
+	ptrs = ft_lstnew(NULL, 0);
+	if (ptrs == NULL)
+	{
+		mlx_destroy_window(mlx_ptr, win_ptr);
+		return (NULL);
+	}
+	ptrs->content = win_ptr;
+	return (ptrs);
+}
+
+t_list		*ft_init_win(char *name)
+{
+	t_list	*ptrs;
+
+	ptrs = ft_mlx_init();
 	if (ptrs == NULL)
 		return (NULL);
-	ptrs->content = mlx_ptr;
-	(ptrs->next)->content = win_ptr;
+	ptrs->next = ft_mlx_new_window(ptrs->content, name);
+	if (ptrs->next == NULL)
+	{
+		free(ptrs);
+		return (NULL);
+	}
 	return (ptrs);
 }
 
@@ -61,14 +91,17 @@ t_list		*ft_init_lst(char *name)
 	ptrs = ft_init_win(name);
 	if (ptrs == NULL)
 		return (NULL);
-// clear list + perror
 	ptrs->next->next = ft_lstnew(NULL, 0);
 	if ((ptrs->next)->next == NULL)
+	{
+		ft_free_param(ptrs);
 		return (NULL);
-// clear list + perror
+	}
 	((ptrs->next)->next)->content = ft_move_init();
 	if (((ptrs->next)->next)->content == NULL)
+	{
+		ft_free_param(ptrs);
 		return (NULL);
-// clear list + perror
+	}
 	return (ptrs);
 }

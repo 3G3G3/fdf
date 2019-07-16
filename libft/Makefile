@@ -6,7 +6,7 @@
 #    By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 16:40:34 by grgauthi          #+#    #+#              #
-#    Updated: 2019/05/04 15:44:42 by grgauthi         ###   ########.fr        #
+#    Updated: 2019/07/16 11:01:39 by grgauthi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC =		ft_memset.c		\
 			ft_memchr.c		\
 			ft_memcmp.c		\
 			ft_strlen.c		\
+			ft_free_char.c	\
 			ft_strdup.c		\
 			ft_strcpy.c		\
 			ft_strncpy.c	\
@@ -52,6 +53,7 @@ SRC =		ft_memset.c		\
 			ft_strsub.c		\
 			ft_strjoin.c	\
 			ft_strtrim.c	\
+			ft_free_char_2stars.c	\
 			ft_strsplit.c	\
 			ft_itoa.c		\
 			ft_putchar.c	\

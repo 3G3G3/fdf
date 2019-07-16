@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 21:59:07 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 21:59:12 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 12:28:24 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void				ft_get_extent_point(t_point *extent, t_point *point)
 	extent->z_p = fmax(extent->z_p, point->z_p);
 }
 
-void				ft_get_extent(t_list *param)
+int					ft_get_extent(t_list *param)
 {
 	t_point		*extent;
 	t_list		*points;
@@ -42,7 +42,7 @@ void				ft_get_extent(t_list *param)
 	points = ft_get_points(param);
 	extent = ft_get_extent_init((t_point *)(points->content));
 	if (extent == NULL)
-		return ;
+		return (-1);
 	points = points->next;
 	while (points != NULL)
 	{
@@ -52,4 +52,5 @@ void				ft_get_extent(t_list *param)
 	ft_get_move(param)->zoom = fmax(fabs(extent->x_p - extent->x_m),
 		fabs(extent->z_p - extent->z_m));
 	free(extent);
+	return (0);
 }
