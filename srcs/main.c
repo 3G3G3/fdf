@@ -50,8 +50,5 @@ int				main(int argc, char **argv)
 
 /*
 ** projection en perspective, mobilite
-** usage en cas d'erreur
 ** check rotation
-
-** fuites memoires
 */

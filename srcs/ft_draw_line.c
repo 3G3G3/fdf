@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 20:41:50 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 21:36:52 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/16 15:03:39 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ void		ft_draw_line(t_point *point1, t_point *point2, t_list *param)
 		return ;
 	if (ft_draw_octantr(point1, point2, param, line) == 0)
 		ft_draw_octantl(point1, point2, param, line);
+	free(line);
 }
