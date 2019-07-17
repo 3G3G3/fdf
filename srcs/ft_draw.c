@@ -41,7 +41,7 @@ void			ft_print(t_list *param)
 
 	mlx_clear_window(param->content, (param->next)->content);
 	points = ft_get_points(param);
-	if (ft_center(points) == -1)
+	if (ft_center(param) == -1)
 	{
 		ft_free_param(param);
 		ft_putendl("error malloc: ft_center");

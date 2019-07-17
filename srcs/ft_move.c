@@ -12,6 +12,7 @@
 
 #include "fdf.h"
 
+/*
 void			ft_rotate_x(t_point *point, t_move *move)
 {
 	int			y;
@@ -33,6 +34,26 @@ void			ft_rotate_z(t_point *point, t_move *move)
 	point->x_m = cos(move->theta_z) * x - sin(move->theta_z) * y;
 	point->y_m = sin(move->theta_z) * x + cos(move->theta_z) * y;
 }
+*/
+
+void			ft_rotate_t(t_point *point, t_move *move)
+{
+	int			x;
+	int			y;
+	int			z;
+
+	x = point->x_m;
+	y = point->y_m;
+	z = point->z_m;
+	point->x_m = cos(move->theta_z) * x
+		- sin(move->theta_z) * cos(move->theta_x) * y
+		+ sin(move->theta_z) * sin(move->theta_x) * z;
+	point->y_m = sin(move->theta_z) * x
+		+ cos(move->theta_z) * cos(move->theta_x) * y
+		- cos(move->theta_z) * sin(move->theta_x) * z;
+	point->z_m = sin(move->theta_x) * y + cos(move->theta_x) * z;
+}
+
 
 void			ft_rotate(t_list *points, t_move *move)
 {
@@ -41,12 +62,7 @@ void			ft_rotate(t_list *points, t_move *move)
 	while (points)
 	{
 		point = (t_point *)(points->content);
-		if (point->z != 0)
-			point->z_m = point->z_m + move->t_height;
-		else
-			point->z_m = point->z_m;
-		ft_rotate_z(point, move);
-		ft_rotate_x(point, move);
+		ft_rotate_t(point, move);
 		points = points->next;
 	}
 }
@@ -98,6 +114,7 @@ void			ft_translate(t_list *points, t_move *move)
 	{
 		point = (t_point *)(points->content);
 		point->x_m = point->x_m + move->t_x;
+		point->y_m = point->y_m + move->t_y;
 		point->z_m = point->z_m + move->t_z;
 		points = points->next;
 	}

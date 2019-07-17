@@ -21,11 +21,15 @@ int			ft_keys2(int keycode, void *param)
 		move->t_x = move->t_x - 1;
 	else if (keycode == 15)
 		move->t_x = move->t_x + 1;
+	else if (keycode == 11)
+		move->t_y = move->t_y - 1;
+	else if (keycode == 3)
+		move->t_y = move->t_y + 1;
 	else if (keycode == 2)
 		move->t_z = move->t_z - 1;
 	else if (keycode == 32)
 		move->t_z = move->t_z + 1;
-	else if (keycode == 11)
+	else if (keycode == 17)
 		move->t_height++;
 	else if (keycode == 1)
 		move->t_height--;

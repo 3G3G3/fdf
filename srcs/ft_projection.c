@@ -14,8 +14,8 @@
 
 int				ft_normalize_position(double x, int size, t_move *move)
 {
-	return (round(size / 2
-		+ fmax(0, 0.7 + 0.1 * move->m_zoom) * x * size / move->zoom));
+	return (round((size / 2
+		+ fmax(0, 0.5 + 0.1 * move->m_zoom) * x * size / move->zoom)));
 }
 
 void			ft_get_win_position(t_list *param)
@@ -61,13 +61,10 @@ void			ft_projection(t_list *param)
 	void		(*proj)(t_point *);
 
 	points = ft_get_points(param);
-	point = (t_point *)(points->content);
 	if (ft_get_move(param)->proj != 'q')
 		proj = &ft_projection_parallele_point;
 	else
 		proj = &ft_perspective_projection_point;
-	proj(point);
-	points = points->next;
 	while (points != NULL)
 	{
 		point = (t_point *)(points->content);

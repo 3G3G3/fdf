@@ -39,6 +39,7 @@ void		ft_clear_move(t_list *param)
 
 	move = ft_get_move(param);
 	move->t_x = 0;
+	move->t_y = 0;
 	move->t_z = 0;
 	move->t_height = 0;
 	move->m_zoom = 0;

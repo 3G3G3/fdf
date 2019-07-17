@@ -15,7 +15,10 @@
 t_point				*ft_get_center(t_list *points)
 {
 	t_point			*center;
+	t_move			*move;
 
+	move = ft_get_move(points);
+	points = ft_get_points(points);
 	center = ft_memalloc(sizeof(t_point));
 	if (center == NULL)
 		return (NULL);
@@ -26,7 +29,13 @@ t_point				*ft_get_center(t_list *points)
 	{
 		center->x = fmax(center->x, ((t_point *)(points->content))->x);
 		center->y = fmax(center->y, ((t_point *)(points->content))->y);
-		center->z = fmax(center->z, ((t_point *)(points->content))->z);
+		if (((t_point *)(points->content))->z != 0)
+		{
+			center->z = fmax(center->z, ((t_point *)(points->content))->z
+				+ move->t_height);
+		}
+		else
+			center->z = fmax(center->z, ((t_point *)(points->content))->z);
 		points = points->next;
 	}
 	return (center);
@@ -35,8 +44,11 @@ t_point				*ft_get_center(t_list *points)
 int					ft_center(t_list *points)
 {
 	t_point			*point;
+	t_move			*move;
 	t_point			*center;
 
+	move = ft_get_move(points);
+	points = ft_get_points(points);
 	center = ft_get_center(points);
 	if (center == NULL)
 		return (-1);
@@ -45,7 +57,10 @@ int					ft_center(t_list *points)
 		point = (t_point *)(points->content);
 		point->x_m = point->x - (center->x / 2);
 		point->y_m = point->y - (center->y / 2);
-		point->z_m = point->z - (center->z / 2);
+		if (point->z != 0)
+			point->z_m = point->z + move->t_height - (center->z / 2);
+		else
+			point->z_m = point->z - (center->z / 2);
 		points = points->next;
 	}
 	free(center);

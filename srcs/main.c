@@ -12,7 +12,7 @@ t_list			*ft_init(char *argv)
 	if (res == NULL)
 		return( (t_list *)ft_free_lst(points));
 	((res->next)->next)->next = points;
-	if (ft_center(points) == -1)
+	if (ft_center(res) == -1)
 	{
 		ft_free_param(res);
 		return (NULL);
@@ -50,5 +50,4 @@ int				main(int argc, char **argv)
 
 /*
 ** projection en perspective, mobilite
-** check rotation
 */

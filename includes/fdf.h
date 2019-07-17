@@ -27,6 +27,7 @@ typedef	struct		s_move
 {
 	char			proj;
 	int				t_x;
+	int				t_y;
 	int				t_z;
 	int				t_height;
 	double			theta_x;

@@ -49,8 +49,10 @@ int					ft_get_extent(t_list *param)
 		ft_get_extent_point(extent, (t_point *)(points->content));
 		points = points->next;
 	}
-	ft_get_move(param)->zoom = fmax(fabs(extent->x_p - extent->x_m),
-		fabs(extent->z_p - extent->z_m));
+//	ft_get_move(param)->zoom = fmax(fabs(extent->x_p - extent->x_m),
+//		fabs(extent->z_p - extent->z_m));
+	ft_get_move(param)->zoom = fmax(fmax(fabs(extent->x_p), fabs(extent->x_m)),
+		fmax(fabs(extent->z_p), fabs(extent->z_m)));
 	free(extent);
 	return (0);
 }

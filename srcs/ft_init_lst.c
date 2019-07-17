@@ -21,6 +21,7 @@ t_move		*ft_move_init(void)
 		return (NULL);
 	res->proj = 'p';
 	res->t_x = 0;
+	res->t_y = 0;
 	res->t_z = 0;
 	res->t_height = 0;
 	res->theta_x = -asin(1 / sqrt(3));
