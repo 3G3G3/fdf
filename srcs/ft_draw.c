@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 20:32:22 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/16 16:28:38 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:23:28 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			ft_print(t_list *param)
 	{
 		ft_free_param(param);
 		ft_putendl("error malloc: ft_center");
-		exit (-1);
+		exit(-1);
 	}
 	ft_move(param);
 	ft_projection(param);

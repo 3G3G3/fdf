@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/11 13:47:07 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/16 15:03:37 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/17 20:08:51 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_move		*ft_move_init(void)
 	res->t_y = 0;
 	res->t_z = 0;
 	res->t_height = 0;
-	res->theta_x = -asin(1 / sqrt(3));
+	res->theta_x = -M_PI / 12;
 	res->theta_z = M_PI / 4;
 	res->m_zoom = 0;
 	return (res);

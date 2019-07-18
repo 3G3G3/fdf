@@ -23,6 +23,7 @@ SRCS = main.c					\
 		ft_keys_tools.c			\
 		ft_keys2.c				\
 		ft_keys.c				\
+		ft_window_position.c	\
 		ft_projection.c			\
 		ft_draw.c				\
 		ft_draw_line_octantr.c	\

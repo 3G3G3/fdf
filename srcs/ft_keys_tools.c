@@ -6,15 +6,13 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 21:53:13 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/16 15:33:06 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:25:29 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-double		ft_rotate_angle(t_move *move)
+double		ft_rotate_angle(void)
 {
-	if (move->proj == 'i')
-		return (M_PI / 2);
 	return (M_PI / 24);
 }

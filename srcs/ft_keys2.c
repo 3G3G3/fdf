@@ -6,11 +6,18 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 21:48:42 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/15 21:58:57 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/18 11:33:50 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int			ft_key_exit(int keycode, void *param)
+{
+	if (keycode == 53)
+		ft_exit(param);
+	return (0);
+}
 
 int			ft_keys2(int keycode, void *param)
 {
@@ -37,7 +44,5 @@ int			ft_keys2(int keycode, void *param)
 		move->m_zoom++;
 	else if (keycode == 31)
 		move->m_zoom--;
-	else if (keycode == 53)
-		ft_exit(param);
-	return (0);
+return (ft_key_exit(keycode, param));
 }

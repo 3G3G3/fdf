@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 14:41:58 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/16 14:00:27 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/17 20:06:17 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef	struct		s_line
 	int				e;
 }					t_line;
 
-
 t_move				*ft_get_move(t_list *param);
 
 t_list				*ft_get_points(t_list *param);
@@ -105,7 +104,7 @@ void				*ft_free_lst(t_list *param);
 
 void				ft_free_param(t_list *param);
 
-double				ft_rotate_angle(t_move *move);
+double				ft_rotate_angle(void);
 
 int					ft_keys2(int keycode, void *param);
 

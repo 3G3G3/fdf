@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 21:59:07 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/16 14:44:16 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/07/17 19:24:33 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ int					ft_get_extent(t_list *param)
 		ft_get_extent_point(extent, (t_point *)(points->content));
 		points = points->next;
 	}
-//	ft_get_move(param)->zoom = fmax(fabs(extent->x_p - extent->x_m),
-//		fabs(extent->z_p - extent->z_m));
 	ft_get_move(param)->zoom = fmax(fmax(fabs(extent->x_p), fabs(extent->x_m)),
 		fmax(fabs(extent->z_p), fabs(extent->z_m)));
 	free(extent);
