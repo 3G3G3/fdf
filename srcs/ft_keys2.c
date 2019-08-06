@@ -6,7 +6,7 @@
 /*   By: grgauthi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 21:48:42 by grgauthi          #+#    #+#             */
-/*   Updated: 2019/07/18 11:33:50 by grgauthi         ###   ########.fr       */
+/*   Updated: 2019/08/05 19:06:44 by grgauthi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ int			ft_keys2(int keycode, void *param)
 		move->m_zoom++;
 	else if (keycode == 31)
 		move->m_zoom--;
-return (ft_key_exit(keycode, param));
+	return (ft_key_exit(keycode, param));
 }
